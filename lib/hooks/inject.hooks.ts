@@ -1,13 +1,21 @@
-import { Injector } from "../types/inject.types";
+import { Injector, InjectorCreator } from "../types/inject.types";
 
-export const createInjector = <T>(): Injector<T> => {
+export const createInjector: InjectorCreator = <T>(
+  quiet: boolean = false
+): Injector<T> => {
   const map: Map<string, T> = new Map();
   return {
     provide(key: string, value: T): void {
       map.set(key, value);
     },
-    inject(key: string): T {
-      if (!map.has(key)) throw new Error(`Injector: key (${key}) not found`);
+    inject(key: string): T | null {
+      if (!map.has(key)) {
+        if (!quiet) {
+          throw new Error(`Injector: key (${key}) not found`);
+        }
+        return null;
+      }
+
       return map.get(key)!;
     },
   };

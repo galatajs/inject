@@ -1,4 +1,5 @@
-import { createInjector } from "./../lib/hooks/inject.hooks";
+import { createInjector } from "../lib";
+
 describe("Injector tests", () => {
   it("createInjector should return an Injector", () => {
     const injector = createInjector();
