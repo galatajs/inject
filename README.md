@@ -2,62 +2,62 @@
 <br>
 <img src="https://avatars.githubusercontent.com/u/108695351?s=200&v=4" width="128" height="128">
 </p>
-<h3 align="center">@istanbul/inject</h3>
+<h3 align="center">@galatajs/inject</h3>
 <p align="center">
-  Dependency Injection package of <code>istanbul</code> framework. 
+  Dependency Injection package of <code>galatajs</code> framework. 
 </p>
 
 ### What Is It?
 
-This package is the inject package of the ``istanbul`` framework. 
+This package is the inject package of the ``galatajs`` framework. 
 
 With this package, you can provide some values that you will reuse to inject later.
 
-You don't have to use ``istanbul`` framework, `@istanbul/inject` is a nodejs package.
+You don't have to use ``galatajs`` framework, `@galatajs/inject` is a nodejs package.
 
 ### Installation
 
 ```sh
-npm install @istanbul/inject
+npm install @galatajs/inject
 ```
 
 > or with yarn
 >
 > ```
-> yarn add @istanbul/inject
+> yarn add @galatajs/inject
 > ```
 
 ### Usage With Global Provider
 
 ```typescript
 // main.ts
-import { provide } from "@istanbul/inject"
+import { provide } from "@galatajs/inject"
 
 const logger = (...msg: any[]) => {
   console.log(...msg);
 }
 
 provide("logger", logger);
-provide("city", "istanbul")
+provide("city", "galatajs")
 provide("population", 15600000)
 ```
 
 ```typescript
 // anything.ts
-import { inject } from "@istanbul/inject"
+import { inject } from "@galatajs/inject"
 
 const logger = inject("logger")
 const city = inject("city")
 const population = inject("population")
 
 logger("Hello, ", city, " has ", population, " people.")
-// Hello, istanbul has 15600000 people.
+// Hello, galatajs has 15600000 people.
 ```
 
 ### Usage With Custom Types
 
 ```typescript
-import { createInjector } from "@istanbul/inject"
+import { createInjector } from "@galatajs/inject"
 
 type Product = {
   name: string
